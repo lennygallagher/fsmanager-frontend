@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {AirportService} from "./airport.service";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-airport',
@@ -8,17 +7,6 @@ import {AirportService} from "./airport.service";
 })
 export class AirportComponent implements OnInit {
 
-  constructor(private airportService: AirportService) { }
-
-  AirportList: any = []
-
   ngOnInit(): void {
-    this.loadAirports()
-  }
-
-  private loadAirports() {
-    return this.airportService.getAllAirports().subscribe((data: {})=>{
-      this.AirportList = data;
-    })
   }
 }

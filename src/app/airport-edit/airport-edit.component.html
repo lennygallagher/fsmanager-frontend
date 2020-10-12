@@ -1,0 +1,14 @@
+<div class="container custom-container-2" *ngIf="airport">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Id</label>
+      <input type="text" name="id" readonly class="form-control-plaintext" id="id" [(ngModel)]="airport.id">
+    </div>
+    <div class="form-group">
+      <label for="name">Airport Name</label>
+      <input type="text" name="name" class="form-control" id="name" aria-describedby="airport name" [(ngModel)]="airport.name">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
+  </form>
+</div>
