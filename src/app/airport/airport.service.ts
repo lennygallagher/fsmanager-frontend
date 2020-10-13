@@ -32,6 +32,10 @@ export class AirportService {
     return this.http.get<Airport>(url);
   }
 
+  saveAirport(airport: Airport): Observable<Airport> {
+    return this.http.post<Airport>(this.apiUrl, airport);
+  }
+
   updateAirport(airport: Airport): Observable<Airport> {
     return this.http.put<Airport>(this.apiUrl, airport);
   }
@@ -49,4 +53,6 @@ export class AirportService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
+
+
 }

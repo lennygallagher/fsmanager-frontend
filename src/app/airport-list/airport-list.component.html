@@ -1,10 +1,3 @@
-
-<!-- Show it when there is no employee -->
-<div class="no-data text-center" *ngIf="AirportList.length == 0">
-  <p>There is no airport available!</p>
-  <button class="btn btn-outline-primary" routerLink="/airport-add">Add Airport</button>
-</div>
-
 <div *ngIf="AirportList.length !== 0">
   <h3 class="mb-3 text-center">Airport List</h3>
 
@@ -14,6 +7,8 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Name</th>
+        <th scope="col">IATA</th>
+        <th scope="col">ICAO</th>
         <th scope="col">Action</th>
       </tr>
       </thead>
@@ -21,6 +16,8 @@
       <tr *ngFor="let airport of AirportList">
         <td>{{airport.id}}</td>
         <td>{{airport.name}}</td>
+        <td>{{airport.iata}}</td>
+        <td>{{airport.icao}}</td>
         <td>
           <a routerLink="/airport-edit/{{airport.id}}">Edit</a>
           <!--<span class="delete" (click)="deleteEmployee(airport.id)">Delete</span>-->
@@ -29,5 +26,7 @@
       </tbody>
     </table>
   </div>
-
+</div>
+<div>
+  <button class="btn btn-outline-primary" routerLink="/airport-add">Add Airport</button>
 </div>

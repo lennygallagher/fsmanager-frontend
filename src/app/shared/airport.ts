@@ -1,5 +1,7 @@
-export class Airport {
-  id: string;
+import {BaseEntity} from './baseEntity';
+
+export class Airport extends BaseEntity{
   name: string;
-  version: number;
+  iata: string;
+  icao: string;
 }
