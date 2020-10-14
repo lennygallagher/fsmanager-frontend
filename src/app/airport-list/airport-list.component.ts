@@ -8,7 +8,8 @@ import {AirportService} from '../airport/airport.service';
 })
 export class AirportListComponent implements OnInit {
 
-  constructor(private airportService: AirportService) {}
+  constructor(private airportService: AirportService) {
+  }
 
   AirportList: any = [];
 
@@ -22,4 +23,9 @@ export class AirportListComponent implements OnInit {
     });
   }
 
+  delete(airportId: string): void {
+    this.airportService.delete(airportId).subscribe((data) => {
+        this.loadAirports();
+    });
+  }
 }

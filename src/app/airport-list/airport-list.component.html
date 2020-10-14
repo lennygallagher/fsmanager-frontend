@@ -19,8 +19,10 @@
         <td>{{airport.iata}}</td>
         <td>{{airport.icao}}</td>
         <td>
-          <a routerLink="/airport-edit/{{airport.id}}">Edit</a>
-          <!--<span class="delete" (click)="deleteEmployee(airport.id)">Delete</span>-->
+          <div>
+            <a class="pr-3" routerLink="/airport-edit/{{airport.id}}">Edit</a>
+            <a (click)="delete(airport.id)" routerLink=null>Delete</a>
+          </div>
         </td>
       </tr>
       </tbody>

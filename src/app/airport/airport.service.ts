@@ -40,6 +40,12 @@ export class AirportService {
     return this.http.put<Airport>(this.apiUrl, airport);
   }
 
+  delete(airportId: string): Observable<void>{
+    const url = `${this.apiUrl}/${airportId}`;
+    return this.http.delete<void>(url);
+  }
+
+
   // Error handling
   handleError(error): Observable<never> {
     let errorMessage;
@@ -53,6 +59,4 @@ export class AirportService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-
-
 }

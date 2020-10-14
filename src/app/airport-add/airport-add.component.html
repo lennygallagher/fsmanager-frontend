@@ -1,16 +1,48 @@
 <div class="container custom-container-2">
   <form #form="ngForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
+
+    <div id="name-formgroup" class="form-group w-50">
       <label for="name">Airport Name</label>
-      <input type="text" name="name" class="form-control" id="name" aria-describedby="airport name" [(ngModel)]="airport.name">
+      <input #name="ngModel" required type="text" name="name" class="form-control" id="name" aria-describedby="airport name" [(ngModel)]="airport.name">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+          Airport name is required.
+        </div>
+      </div>
     </div>
-    <div class="form-group">
+
+    <div class="form-group w-25">
       <label for="iata">IATA</label>
-      <input type="text" name="iata" class="form-control" id="iata" aria-describedby="airport name" [(ngModel)]="airport.iata">
+      <input required #iata="ngModel" minlength="3" maxlength="3" pattern="[A-Z]{3}" type="text" name="iata" class="form-control" id="iata" aria-describedby="airport name" [(ngModel)]="airport.iata">
+      <div *ngIf="iata.invalid && (iata.dirty || iata.touched)"
+           class="alert alert-danger">
+        <div *ngIf="iata.errors.required">
+          IATA Code is required.
+        </div>
+        <div *ngIf="iata.errors.minlength || iata.errors.maxlength">
+          IATA Code must be 3 Characters long.
+        </div>
+        <div *ngIf="iata.errors.pattern">
+          IATA Code not valid: Must be uppercase and alphanumeric.
+        </div>
+      </div>
     </div>
-    <div class="form-group">
+    <div class="form-group  w-25">
       <label for="icao">ICAO</label>
-      <input type="text" name="icao" class="form-control" id="icao" aria-describedby="airport name" [(ngModel)]="airport.icao">
+      <input #icao="ngModel" required minlength="4" maxlength="4" pattern="[A-Z]{4}" type="text" name="icao" class="form-control" id="icao" aria-describedby="airport name" [(ngModel)]="airport.icao">
+      <div *ngIf="icao.invalid && (icao.dirty || icao.touched)"
+           class="alert alert-danger">
+        <div *ngIf="iata.errors.required">
+          ICAO Code is required.
+        </div>
+        <div *ngIf="icao.errors.minlength || icao.errors.maxlength">
+          ICAO Code must be 4 Characters long.
+        </div>
+        <div *ngIf="icao.errors.pattern">
+          IATA Code not valid: Must be uppercase and alphanumeric.
+        </div>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="button" class="btn btn-secondary" (click)="back()">Back</button>
